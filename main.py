@@ -7,6 +7,8 @@ import math
 RENDER_MODE = 1 #render only nearby
 #RENDER_MODE = 2 #render all (for testing)
 
+TRACER_ENABLE = False #show the path of each asteroid
+
 DEBUG_ENABLE = False #prints error if asteroid is not rendered in time
 
 spaceship_x = 150
@@ -113,9 +115,10 @@ def main():
     frame = 0
     hard_recalc(frame)
     recalc_pos = 0
+    display.fill((200, 200, 200))
     while not done:
-        display.fill((200, 200, 200))
-
+        if not TRACER_ENABLE:
+            display.fill((200, 200, 200))
         if RENDER_MODE == 1: #NORMAL
             for index in range(len(active_asteroids) - 1, -1, -1):
                 asteroid = active_asteroids[index]
